@@ -1,7 +1,8 @@
 import React from 'react';
 import { Form, Field, withFormik } from "formik";
 import styled from "styled-components";
-
+import axios from 'axios';
+​
 const SignUpTitle = styled.h1`
     font-size: 3rem;
     margin: 2rem 0;
@@ -11,28 +12,17 @@ const SignUpDiv = styled.div`
     justify-content: center;
     align-content: center;
 `
-
+​
 const SignUpWrapper = styled.div`
     box-shadow: 1px 1px 5px 5px;
     width: 50%;
     height: 25rem;
     display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: space-evenly;
     background-color: white;
 `
-
-const FieldCon = styled.input`
-    border: none;
-    border-bottom: 4px solid #1b79e7;
-    font-size: 3rem;
-`
-
-const FormCon = styled.form`
-
-`
-
+​
 const ButtonStyle = styled.button`
     width: 50%;
     align-self: center;
@@ -57,36 +47,41 @@ const ButtonStyle = styled.button`
     font-family:Arial;
     font-size:18px;
     font-weight:bold;
-    padding:10px 74px;
+    padding:10px 20px;
     text-decoration:none;
     text-shadow:0px 1px 0px #1570cd;
+    margin: 40px;
+    margin-left: 150px;
 `;
-
+​
 const SignUp = () => {
     
     return (
         <SignUpDiv>
-            <SignUpWrapper>
-                <FormCon>
-                    <div>
-                        <FieldCon type="text" name="user" placeholder="username" />
-                    </div>
-
-                    <div>
-                        <FieldCon type="email" name="email" placeholder="email" />
-                    </div>
-
-                    <div>    
-                        <FieldCon type="password" name="password" placeholder="password" />
-                    </div>
-                    <ButtonStyle type="submit">Submit</ButtonStyle>
-                </FormCon>
+            <SignUpWrapper className="form-wrapper">
+           
+                
+                <Form className="signup-form">
+                    <SignUpTitle>Sign Up!</SignUpTitle>
+                        <div className="field-div">
+                            <Field className="signup-field" type="text" name="user" placeholder="username" />
+                        </div>
+​
+                        <div className="field-div">
+                            <Field className="signup-field" type="email" name="email" placeholder="email" />
+                        </div>
+​
+                        <div className="field-div">    
+                            <Field className="signup-field" type="password" name="password" placeholder="password" />
+                        </div>
+                        <ButtonStyle type="submit">Submit</ButtonStyle>
+                </Form>
             </SignUpWrapper>
         </SignUpDiv>
     )
 };
-
-
+​
+​
 const FormikSignUp = withFormik({
     mapPropsToValues({user, email, password}) {
         return {
@@ -94,7 +89,17 @@ const FormikSignUp = withFormik({
             email: email || "",
             password: password || ""
     }
-  }
-})(SignUp);
-
+  },
+​
+  handleSubmit(values, { setStatus }) {
+      axios
+      .post("https://reqres.in/api/users/", values)
+      .then(res => {
+          setStatus(res.data);
+          console.log(res);
+      })
+      .catch(err => console.log('post request error', err.response))
+    }
+  })(SignUp);
+​
 export default FormikSignUp
