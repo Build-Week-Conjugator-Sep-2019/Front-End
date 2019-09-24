@@ -381,16 +381,15 @@ template {
     border:1px solid #337fed;
     cursor:pointer;
     color:#ffffff;
-    font-family:Arial;
     font-size:18px;
     font-weight:bold;
     padding:10px 74px;
     text-shadow:0px 1px 0px #1570cd;
-    width: 20%;
-    margin: auto;
+    width: 30%;
+    margin: 1.5rem auto 0 auto;
     display: flex;
     justify-content: center;
-    transition: 1s
+    transition: 1s;
 }
 ​
 .LinkStyle:hover
@@ -400,7 +399,15 @@ template {
           transform: scale(1.3);
           transition: 2s;
   }
-​
+
+.FormCon {
+  margin: 1rem;
+}
+
+.fields {
+  max-width: 100%;
+}
+
 .fields ::placeholder {
   color: lightgrey;
 }
@@ -429,4 +436,17 @@ template {
 ​
 .field-div input{
   width: 100%;
+}
+
+.FieldCon {
+    border: none;
+    width: 100%;
+    border-bottom: 4px solid #f3c58e;
+    font-size: 3rem;
+    
+}
+
+.LinkStyle loginButton {
+  width: 100%;
+  border: 2px solid red;
 }
