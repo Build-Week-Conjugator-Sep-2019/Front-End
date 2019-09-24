@@ -5,7 +5,7 @@ import './App.css'
 import Card from './components/Card'
 // import Navigation from './components/Navigation'
 import FormikLogin from './components/Login'
-// import FormikSignUp from './components/SignUp';
+import FormikSignUp from './components/SignUp';
 
 
 
@@ -14,10 +14,10 @@ function App() {
   return (
     <div className="App">
       {/* <Navigation /> */}
-      <Card />
+      {/* <Card /> */}
       
       <Route exact path= "/" component={FormikLogin} />
-      {/* <Route path="/sign-up" component={FormikSignUp} /> */}
+      <Route path="/sign-up" component={FormikSignUp} />
     </div>
   );
 }
