@@ -14,7 +14,7 @@ function App() {
   return (
     <div className="App">
       {/* <Navigation /> */}
-      {/* <Card /> */}
+      <Card />
       
       <Route exact path= "/" component={FormikLogin} />
       <Route path="/sign-up" component={FormikSignUp} />

@@ -1,4 +1,23 @@
 import React, { useState, useEffect } from 'react'
+import UIfx from "uifx"
+import correctAudio from "../assets/correct.mp3"
+import incorrectAudio from "../assets/incorrect.mp3"
+import Charts from './Charts'
+
+const correct = new UIfx (
+  correctAudio,
+  {
+    volume: 0.6
+  }
+)
+
+const incorrect = new UIfx (
+  incorrectAudio,
+  {
+    volume: 0.6,
+    throttleMs: 300
+  }
+)
 
 // const answersArray = [
 //     'Camino',
@@ -33,6 +52,9 @@ const AnswerForm = props => {
     function checkAnswer(){
        if(answers.answerBar === Object.values(dataArray[streak]).join()){
             addOne()
+            correct.play()
+       } else {
+         incorrect.play()
        }
     }
 
@@ -63,6 +85,7 @@ const AnswerForm = props => {
                 <button onSubmit={() => handleSubmit()} onClick={checkAnswer}>Submit!</button>
             </form>
             <p>{currentQ}</p>
+            <Charts />
       </div>
     )
 }
