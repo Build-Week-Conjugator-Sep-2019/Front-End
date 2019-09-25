@@ -63,6 +63,8 @@ const AnswerForm = props => {
     const [totalQs, setTotalQs] = useState(0)
     const [currentQ, setCurrentQ] = useState([])
     const [currentA, setCurrentA] = useState([])
+    const [incorrectAnswers, setIncorrectAnswers] =useState(0)
+    const [correctAnswers, setCorrectAnswers] = useState(0)
     // useState(Object.keys(dataArray[currentIndex]).join())
     const [answers, setAnswers] = useState({
         answerBar: ''
@@ -85,9 +87,11 @@ const AnswerForm = props => {
         if(answers.answerBar === currentA){
             addOne()
             correct.play()
+            setCorrectAnswers(correctAnswers + 1)
         }else {
             setStreak(0)
             incorrect.play()
+            setIncorrectAnswers(incorrectAnswers + 1)
        }
     }
 
@@ -153,7 +157,6 @@ const AnswerForm = props => {
     return (
       <CardAndChartDiv>
         <div>
-            {streak} {totalQs}
             <form onSubmit={event => handleSubmit(event)}>
                 <label htmlFor='answerBar'>
                     Answer:
@@ -168,7 +171,7 @@ const AnswerForm = props => {
             <p>{currentQ}</p>
         </div>
         <ChartDiv>
-        <Charts currentStreak={streak} longestStreak={totalQs} currentIndex={currentIndex}/>
+        <Charts incorrectAnswers={incorrectAnswers} correctAnswers={correctAnswers} currentStreak={streak} longestStreak={totalQs} />
         </ChartDiv>
       </CardAndChartDiv>
     )
