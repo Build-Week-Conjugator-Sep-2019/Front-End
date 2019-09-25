@@ -431,3 +431,7 @@ template {
   width: 100%;
   border: 2px solid red;
 }
+
+.submit-answer {
+  height: 24px;
+}

@@ -3,6 +3,7 @@ import UIfx from "uifx"
 import correctAudio from "../assets/correct.mp3"
 import incorrectAudio from "../assets/incorrect.mp3"
 import Charts from './Charts'
+import axios from 'axios'
 
 const correct = new UIfx (
   correctAudio,
@@ -47,14 +48,27 @@ const dataArray = [
 
 const AnswerForm = props => {
     
+
+    useEffect(() => {
+        axios
+        .get(`https://conju.herokuapp.com/api/verbs`)
+        .then(response => {
+            console.log(response.data)
+            setCurrentQ(response.data)
+        })
+        .catch(error => {
+            console.log(error)
+        })
+    }, [])
+
     const [streak, setStreak] = useState(0)
     const [currentIndex, setCurrentIndex] = useState(0)
     const [totalQs, setTotalQs] = useState(0)
-    const [currentQ, setCurrentQ] = useState(Object.keys(dataArray[currentIndex]).join())
+    const [currentQ, setCurrentQ] = useState()
+    // useState(Object.keys(dataArray[currentIndex]).join())
     const [answers, setAnswers] = useState({
         answerBar: ''
       })
-
     const addOne = e => {
         setStreak(streak + 1)
         setCurrentIndex(currentIndex + 1)
@@ -65,7 +79,6 @@ const AnswerForm = props => {
             setCurrentIndex(0)
         }
     }
-
     function checkAnswer(){
         if(answers.answerBar === Object.values(dataArray[currentIndex]).join()){
             addOne()
@@ -102,7 +115,7 @@ const AnswerForm = props => {
                 name="answerBar" 
                 value={answers.answerBar}
                 onChange={event => handleChange(event)} />
-                <button onSubmit={() => handleSubmit()} onClick={checkAnswer}>Submit!</button>
+                <button className="submit-answer" onSubmit={() => handleSubmit()} onClick={checkAnswer}>Submit!</button>
             </form>
             <p>{currentQ}</p>
             <Charts streak={streak} currentIndex={currentIndex}/>
