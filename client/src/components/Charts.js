@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Line } from 'react-chartjs-2'
+import { Line, Pie } from 'react-chartjs-2'
 import styled from 'styled-components'
 import Chart from 'chart.js'
 
@@ -10,99 +10,136 @@ const DivCon = styled.div`
     margin-top:300px;
 `;
 
+// const data = {
+//     labels: [1, 2, 3],
+//     datasets: [
+//       {
+//         label: 'My First dataset',
+//         fill: false,
+//         lineTension: 0.1,
+//         backgroundColor: 'rgba(75,192,192,0.4)',
+//         borderColor: 'rgba(75,192,192,1)',
+//         borderCapStyle: 'butt',
+//         borderDash: [],
+//         borderDashOffset: 0.0,
+//         borderJoinStyle: 'miter',
+//         pointBorderColor: 'rgba(75,192,192,1)',
+//         pointBackgroundColor: '#fff',
+//         pointBorderWidth: 1,
+//         pointHoverRadius: 5,
+//         pointHoverBackgroundColor: 'rgba(75,192,192,1)',
+//         pointHoverBorderColor: 'rgba(220,220,220,1)',
+//         pointHoverBorderWidth: 2,
+//         pointRadius: 1,
+//         pointHitRadius: 10,
+//         data: [65, 59, 80, 81, 56, 55, 40]
+//       }
+//     ]
+//   };
+
+const data1 = {
+	labels: [
+		'Red',
+		'Blue',
+		'Yellow'
+	],
+	datasets: [{
+		data: [300, 50, 100],
+		backgroundColor: [
+		'#FF6384',
+		'#36A2EB',
+		'#FFCE56'
+		],
+		hoverBackgroundColor: [
+		'#FF6384',
+		'#36A2EB',
+		'#FFCE56'
+		]
+	}]
+};
+
+
+function Charts ({ currentStreak, longestStreak}) {
+
 const data = {
-    labels: [1, 2, 3],
-    datasets: [
-      {
-        label: 'My First dataset',
-        fill: false,
-        lineTension: 0.1,
-        backgroundColor: 'rgba(75,192,192,0.4)',
-        borderColor: 'rgba(75,192,192,1)',
-        borderCapStyle: 'butt',
-        borderDash: [],
-        borderDashOffset: 0.0,
-        borderJoinStyle: 'miter',
-        pointBorderColor: 'rgba(75,192,192,1)',
-        pointBackgroundColor: '#fff',
-        pointBorderWidth: 1,
-        pointHoverRadius: 5,
-        pointHoverBackgroundColor: 'rgba(75,192,192,1)',
-        pointHoverBorderColor: 'rgba(220,220,220,1)',
-        pointHoverBorderWidth: 2,
-        pointRadius: 1,
-        pointHitRadius: 10,
-        data: [65, 59, 80, 81, 56, 55, 40]
-      }
-    ]
-  };
+	labels: [
+		'Red',
+		'Blue'
+	],
+	datasets: [{
+		data: [currentStreak, longestStreak],
+		backgroundColor: [
+		'#FF6384',
+		'#36A2EB',
+		'#FFCE56'
+		],
+		hoverBackgroundColor: [
+		'#FF6384',
+		'#36A2EB',
+		'#FFCE56'
+		]
+	}]
+};
 
-
-function Charts (props) {
-    const [dataSet, setDataSet] = useState()
+  return (
+    <div>
+      <h2>% of Correct vs. Incorrect Answers</h2>
+      <Pie data={data} />
+    </div>
+  );
+};
+    
+    // const [dataSet, setDataSet] = useState()
     // console.log(props.streak)
 
-    const data = {
-        labels: [1, 2, 3, 4],
-        datasets: [
-          {
-            label: 'Consistency',
-            fill: false,
-            lineTension: 0.1,
-            backgroundColor: 'rgba(243, 197, 142, 1.0)',
-            borderColor: 'rgba(243, 197, 142, 1.0)',
-            borderCapStyle: 'butt',
-            borderDash: [],
-            borderDashOffset: 0.0,
-            borderJoinStyle: 'miter',
-            pointBorderColor: 'rgba(27, 121, 231, 1)',
-            pointBackgroundColor: '#fff',
-            pointBorderWidth: 1,
-            pointHoverRadius: 5,
-            pointHoverBackgroundColor: 'rgba(27, 121, 231, 1)',
-            pointHoverBorderColor: 'rgba(220,220,220,1)',
-            pointHoverBorderWidth: 2,
-            pointRadius: 1,
-            pointHitRadius: 10,
-            data: [props.streak, props.currentIndex, props.streak, props.currentIndex]
-          },
-          {
-            label: 'LifeTime',
-            fill: false,
-            lineTension: 0.1,
-            backgroundColor: 'rgba(231, 137, 27, 1.0)',
-            borderColor: 'rgba(231, 137, 27, 1.0)',
-            borderCapStyle: 'butt',
-            borderDash: [],
-            borderDashOffset: 0.0,
-            borderJoinStyle: 'miter',
-            pointBorderColor: 'rgba(27, 121, 231, 1)',
-            pointBackgroundColor: '#fff',
-            pointBorderWidth: 1,
-            pointHoverRadius: 5,
-            pointHoverBackgroundColor: 'rgba(27, 121, 231, 1)',
-            pointHoverBorderColor: 'rgba(220,220,220,1)',
-            pointHoverBorderWidth: 2,
-            pointRadius: 1,
-            pointHitRadius: 10,
-            data: [2, 3, 4, 0]
-          }
-        ]
-      };
+    // const data = {
+    //     labels: [1, 2, 3, 4],
+    //     datasets: [
+    //       {
+    //         label: 'Consistency',
+    //         fill: false,
+    //         lineTension: 0.1,
+    //         backgroundColor: 'rgba(243, 197, 142, 1.0)',
+    //         borderColor: 'rgba(243, 197, 142, 1.0)',
+    //         borderCapStyle: 'butt',
+    //         borderDash: [],
+    //         borderDashOffset: 0.0,
+    //         borderJoinStyle: 'miter',
+    //         pointBorderColor: 'rgba(27, 121, 231, 1)',
+    //         pointBackgroundColor: '#fff',
+    //         pointBorderWidth: 1,
+    //         pointHoverRadius: 5,
+    //         pointHoverBackgroundColor: 'rgba(27, 121, 231, 1)',
+    //         pointHoverBorderColor: 'rgba(220,220,220,1)',
+    //         pointHoverBorderWidth: 2,
+    //         pointRadius: 1,
+    //         pointHitRadius: 10,
+    //         data: [props.streak, props.currentIndex, props.streak, props.currentIndex]
+    //       },
+    //       {
+    //         label: 'LifeTime',
+    //         fill: false,
+    //         lineTension: 0.1,
+    //         backgroundColor: 'rgba(231, 137, 27, 1.0)',
+    //         borderColor: 'rgba(231, 137, 27, 1.0)',
+    //         borderCapStyle: 'butt',
+    //         borderDash: [],
+    //         borderDashOffset: 0.0,
+    //         borderJoinStyle: 'miter',
+    //         pointBorderColor: 'rgba(27, 121, 231, 1)',
+    //         pointBackgroundColor: '#fff',
+    //         pointBorderWidth: 1,
+    //         pointHoverRadius: 5,
+    //         pointHoverBackgroundColor: 'rgba(27, 121, 231, 1)',
+    //         pointHoverBorderColor: 'rgba(220,220,220,1)',
+    //         pointHoverBorderWidth: 2,
+    //         pointRadius: 1,
+    //         pointHitRadius: 10,
+    //         data: [2, 3, 4, 0]
+    //       }
+    //     ]
+    //   };
 
-    return (
-        <DivCon>
-            <h3>Consistency</h3>
-            <Line
-                // options={{
-                //     responsive: true
-                // }}
-                data={data}
-            />
-
-        </DivCon>
-    )
-}
 
 export default Charts
 

@@ -4,6 +4,7 @@ import correctAudio from "../assets/correct.mp3"
 import incorrectAudio from "../assets/incorrect.mp3"
 import Charts from './Charts'
 import axios from 'axios'
+import styled from "styled-components"
 
 const correct = new UIfx (
   correctAudio,
@@ -19,6 +20,15 @@ const incorrect = new UIfx (
     throttleMs: 300
   }
 )
+
+const CardAndChartDiv = styled.div`
+  display: flex;
+  flex-direction: column;
+`
+
+const ChartDiv = styled.div`
+  margin-top: 230px;
+`
 
 // const answersArray = [
 //     'Camino',
@@ -110,6 +120,7 @@ const AnswerForm = props => {
     
     
     return (
+      <CardAndChartDiv>
         <div>
             {streak} {totalQs}
             <form onSubmit={event => handleSubmit(event)}>
@@ -124,8 +135,11 @@ const AnswerForm = props => {
                 <button className="submit-answer" onSubmit={() => handleSubmit()} onClick={checkAnswer}>Submit!</button>
             </form>
             <p>{currentQ}</p>
-            <Charts streak={streak} currentIndex={currentIndex}/>
-      </div>
+        </div>
+        <ChartDiv>
+        <Charts currentStreak={streak} longestStreak={totalQs} currentIndex={currentIndex}/>
+        </ChartDiv>
+      </CardAndChartDiv>
     )
 }
 
