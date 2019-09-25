@@ -100,6 +100,37 @@ const AnswerForm = props => {
             console.log(valueArray)
             setCurrentQ(valueArray[1])
             setCurrentA(valueArray[2])
+            if(valueArray[1] === 'abandonar') {
+                setCurrentQ(`Conjugate ${valueArray[1]} to First Person Present`)
+            } else if (valueArray[1] === 'abordar') {
+                setCurrentQ(`Conjugate ${valueArray[1]} to First Person Present`)
+            } else if (valueArray[1] === 'abrazar') {
+                setCurrentQ(`Conjugate ${valueArray[1]} to Second Person Present`)
+            } else if (valueArray[1] === 'abrir') {
+                setCurrentQ(`Conjugate ${valueArray[1]} to Second Person Present`)
+            } else if (valueArray[1] === 'aburrir') {
+                setCurrentQ(`Conjugate ${valueArray[1]} to Second Person Present`)
+            } else if (valueArray[1] === 'acampar') {
+                setCurrentQ(`Conjugate ${valueArray[1]} to Second Person Present`)
+            } else if (valueArray[1] === 'acercar') {
+                setCurrentQ(`Conjugate ${valueArray[1]} to Second Person Present`)
+            } else if (valueArray[1] === 'acortar') {
+                setCurrentQ(`Conjugate ${valueArray[1]} to First Person Present Plural`)
+            } else if (valueArray[1] === 'adivinar') {
+                setCurrentQ(`Conjugate ${valueArray[1]} to Second Person Present`)
+            } else if (valueArray[1] === 'admirar') {
+                setCurrentQ(`Conjugate ${valueArray[1]} to Third Person Present Plural`)
+            } else if (valueArray[1] === 'admitir') {
+                setCurrentQ(`Conjugate ${valueArray[1]} to Third Person Present Plural`)
+            } else if (valueArray[1] === 'adorar') {
+                setCurrentQ(`Conjugate ${valueArray[1]} to Third Person Present Plural`)
+            } else if (valueArray[1] === 'adornar') {
+                setCurrentQ(`Conjugate ${valueArray[1]} to Third Person Present Plural`)
+            } else if (valueArray[1] === 'advertir') {
+                setCurrentQ(`Conjugate ${valueArray[1]} to Third Person Present Plural`)
+            } else if (valueArray[1] === 'afirmar') {
+                setCurrentQ(`Conjugate ${valueArray[1]} to Third Person Present Plural`)
+            }
         })
         .catch(error => {
             console.log(error)
