@@ -7,6 +7,7 @@ import '../../src/App.css'
 
 const DivCon = styled.div`
     background: white;
+    margin-top:300px;
 `;
 
 const data = {
@@ -90,7 +91,7 @@ function Charts (props) {
       };
 
     return (
-        <DivCon style={{ position: 'relative', width: 600, height: 350 }}>
+        <DivCon>
             <h3>Consistency</h3>
             <Line
                 // options={{
