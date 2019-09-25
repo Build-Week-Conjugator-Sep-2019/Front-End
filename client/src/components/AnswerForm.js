@@ -47,40 +47,32 @@ const dataArray = [
 ]
 
 const AnswerForm = props => {
-    
-
-    useEffect(() => {
-        axios
-        .get(`https://conju.herokuapp.com/api/verbs`)
-        .then(response => {
-            console.log(response.data)
-            setCurrentQ(response.data)
-        })
-        .catch(error => {
-            console.log(error)
-        })
-    }, [])
 
     const [streak, setStreak] = useState(0)
     const [currentIndex, setCurrentIndex] = useState(0)
     const [totalQs, setTotalQs] = useState(0)
-    const [currentQ, setCurrentQ] = useState()
+    const [currentQ, setCurrentQ] = useState([])
+    const [currentA, setCurrentA] = useState([])
     // useState(Object.keys(dataArray[currentIndex]).join())
     const [answers, setAnswers] = useState({
         answerBar: ''
       })
+
     const addOne = e => {
         setStreak(streak + 1)
-        setCurrentIndex(currentIndex + 1)
+        // setCurrentIndex(currentIndex + 1)
         setTotalQs(totalQs + 1)
-        setCurrentQ(Object.keys(dataArray[currentIndex + 1]).join())
-        if(currentIndex === 9){
-            setCurrentQ(Object.keys(dataArray[0]).join())
-            setCurrentIndex(0)
-        }
+        // setCurrentQ(Object.keys(dataArray[currentIndex + 1]).join())
+        // if(currentIndex === 9){
+        //     setCurrentQ(Object.keys(dataArray[0]).join())
+        //     setCurrentIndex(0)
+        // }
     }
+
+    console.log(currentA)
+
     function checkAnswer(){
-        if(answers.answerBar === Object.values(dataArray[currentIndex]).join()){
+        if(answers.answerBar === currentA){
             addOne()
             correct.play()
         }else {
@@ -89,7 +81,21 @@ const AnswerForm = props => {
        }
     }
 
-    console.log(currentIndex)
+    useEffect(() => {
+        axios
+        .get(`https://conju.herokuapp.com/api/verbs`)
+        .then(response => {
+            console.log(response.data)
+            const valueArray = Object.values(response.data[streak])
+            console.log(valueArray)
+            setCurrentQ(valueArray[1])
+            setCurrentA(valueArray[2])
+        })
+        .catch(error => {
+            console.log(error)
+        })
+    }, [streak])
+    
 
     const handleChange = event => {
         setAnswers({[event.target.name]: event.target.value});
