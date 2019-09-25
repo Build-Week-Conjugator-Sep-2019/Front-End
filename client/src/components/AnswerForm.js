@@ -65,6 +65,7 @@ const AnswerForm = props => {
     const [currentA, setCurrentA] = useState([])
     const [incorrectAnswers, setIncorrectAnswers] =useState(0)
     const [correctAnswers, setCorrectAnswers] = useState(0)
+    const [longestStreak, setLongestStreak] = useState(0)
     // useState(Object.keys(dataArray[currentIndex]).join())
     const [answers, setAnswers] = useState({
         answerBar: ''
@@ -93,6 +94,12 @@ const AnswerForm = props => {
             incorrect.play()
             setIncorrectAnswers(incorrectAnswers + 1)
        }
+    }
+
+    function longStreak() {
+      if (streak > longestStreak) {
+        setLongestStreak(streak)
+      }
     }
 
     useEffect(() => {
@@ -139,6 +146,8 @@ const AnswerForm = props => {
         .catch(error => {
             console.log(error)
         })
+
+        longStreak();
     }, [streak])
     
 
@@ -171,7 +180,7 @@ const AnswerForm = props => {
             <p>{currentQ}</p>
         </div>
         <ChartDiv>
-        <Charts incorrectAnswers={incorrectAnswers} correctAnswers={correctAnswers} currentStreak={streak} longestStreak={totalQs} />
+        <Charts incorrectAnswers={incorrectAnswers} correctAnswers={correctAnswers} currentStreak={streak} longestStreak={longestStreak} />
         </ChartDiv>
       </CardAndChartDiv>
     )
