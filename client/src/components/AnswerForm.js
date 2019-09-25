@@ -86,7 +86,7 @@ const AnswerForm = props => {
         .get(`https://conju.herokuapp.com/api/verbs`)
         .then(response => {
             console.log(response.data)
-            const valueArray = Object.values(response.data[streak])
+            const valueArray = Object.values(response.data[totalQs])
             console.log(valueArray)
             setCurrentQ(valueArray[1])
             setCurrentA(valueArray[2])
