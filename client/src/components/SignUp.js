@@ -23,6 +23,7 @@ const SignUpWrapper1 = styled.div`
 `
 const SignUpWrapper2 = styled.div`
     display: flex;
+    justify-content: space-around;
     margin: 1rem;
     margin: 10 0 0 0rem;
     margin-top: 4rem;
@@ -32,6 +33,7 @@ const SignUpWrapper2 = styled.div`
 const GatorPic = styled.img`
     width: 50%;
     height: 90%;
+    max-width: 300px;
 `
 
 const SignUp = () => {

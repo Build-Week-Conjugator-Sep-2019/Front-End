@@ -66,7 +66,7 @@ const data = {
       <StreakDiv>
         <StreakPar>Your current streak is <StreakNum>{currentStreak}</StreakNum></StreakPar>
         <StreakPar>Your longest streak is <StreakNum>{longestStreak}</StreakNum></StreakPar>
-        <StreakPar>Total questions answered <StreakNum>{totalQsAnswered}</StreakNum></StreakPar>
+        <StreakPar>Total # of correct answers <StreakNum>{totalQsAnswered}</StreakNum></StreakPar>
       </StreakDiv>
       <ChartDiv>
       <h2>Correct vs. Incorrect Answers</h2>
