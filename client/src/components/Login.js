@@ -52,7 +52,7 @@ const Login = ({ status }) => {
                         <div className="fields">
                             <Field className="FieldCon" type="password" name="password" placeholder="Password" />
                         </div>  
-                        <button className="LinkStyle">Login</button>
+                        <Link to='/conjugator' className="LinkStyle">Login</Link>
                     </Form>
                     
                     <Link className="LinkStyle" to="/sign-up">Sign Up!</Link>
@@ -72,7 +72,7 @@ const FormikLogin = withFormik({
     },
     handleSubmit(values, {setStatus, resetForm }) {
         axios
-            .post("https://reqres.in/api/users/", values)
+            .post(`https://conju.herokuapp.com/api/auth/login`, values)
             .then(response => {
                 setStatus(response.data)
                 console.log(response.data)

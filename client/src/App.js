@@ -18,6 +18,7 @@ function App() {
       
       <Route exact path= "/" component={FormikLogin} />
       <Route path="/sign-up" component={FormikSignUp} />
+      <Route path="/conjugator" component={Card} />
     </div>
   );
 }

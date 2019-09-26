@@ -3,6 +3,7 @@ import styled from 'styled-components'
 
 
 import AnswerForm from './AnswerForm'
+import Dictionary from './Dictionary';
 // import Questions from './Questions'
 
 const DivCon = styled.div`
