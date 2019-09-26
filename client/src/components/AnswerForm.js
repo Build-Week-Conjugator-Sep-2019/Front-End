@@ -86,7 +86,7 @@ const AnswerForm = props => {
         // }
     }
 
-    console.log(totalQs)
+    console.log(totalQsAnswered)
 
     function checkAnswer(){
         if(answers.answerBar === currentA){

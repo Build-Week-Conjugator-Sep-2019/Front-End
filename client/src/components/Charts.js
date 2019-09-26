@@ -35,9 +35,9 @@ const StreakNum = styled.span`
   font-weight: bold;
 `
 
-function Charts ({ incorrectAnswers, correctAnswers, currentStreak, longestStreak, totalsQsAnswered }) {
+function Charts ({ incorrectAnswers, correctAnswers, currentStreak, longestStreak, totalQsAnswered }) {
 
-  console.log(totalsQsAnswered)
+  console.log(totalQsAnswered)
 const data = {
 	labels: [
 		'Correct',
@@ -66,7 +66,7 @@ const data = {
       <StreakDiv>
         <StreakPar>Your current streak is <StreakNum>{currentStreak}</StreakNum></StreakPar>
         <StreakPar>Your longest streak is <StreakNum>{longestStreak}</StreakNum></StreakPar>
-        <StreakPar>Total questions answered <StreakNum>{totalsQsAnswered}</StreakNum></StreakPar>
+        <StreakPar>Total questions answered <StreakNum>{totalQsAnswered}</StreakNum></StreakPar>
       </StreakDiv>
       <ChartDiv>
       <h2>Correct vs. Incorrect Answers</h2>
