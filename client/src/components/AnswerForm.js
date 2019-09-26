@@ -3,6 +3,7 @@ import UIfx from "uifx"
 import correctAudio from "../assets/correct.mp3"
 import incorrectAudio from "../assets/incorrect.mp3"
 import Charts from './Charts'
+import Dictionary from './Dictionary'
 import axios from 'axios'
 import styled from "styled-components"
 
@@ -157,13 +158,13 @@ const AnswerForm = props => {
 
     const handleChange = event => {
         setAnswers({[event.target.name]: event.target.value});
-        console.log(answers)
+        // console.log(answers)
       }
 
       const handleSubmit = event => {
         event.preventDefault();
         setAnswers({answerBar: ''})
-        console.log(answers)
+        // console.log(answers)
       }
     
     
@@ -182,6 +183,7 @@ const AnswerForm = props => {
                 <button className="submit-answer" onSubmit={() => handleSubmit()} onClick={checkAnswer}>Submit!</button>
             </form>
             <p>{currentQ}</p>
+                <Dictionary />
         </div>
         <ChartDiv>
             <Charts totalQsAnswered={totalQsAnswered} incorrectAnswers={incorrectAnswers} correctAnswers={correctAnswers} currentStreak={streak} longestStreak={longestStreak} />
