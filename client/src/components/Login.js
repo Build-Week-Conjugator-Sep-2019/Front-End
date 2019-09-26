@@ -52,7 +52,7 @@ const Login = ({ status }) => {
                         <div className="fields">
                             <Field className="FieldCon" type="password" name="password" placeholder="Password" />
                         </div>  
-                        <button className="LinkStyle">Login</button>
+                        <Link to='/conjugator' className="LinkStyle">Login</Link>
                     </Form>
                     
                     <Link className="LinkStyle" to="/sign-up">Sign Up!</Link>

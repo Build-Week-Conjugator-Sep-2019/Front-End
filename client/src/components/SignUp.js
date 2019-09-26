@@ -1,6 +1,7 @@
 import React from 'react';
 import { Form, Field, withFormik } from "formik";
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 const SignUpTitle = styled.h1`
    font-size: 3rem;
@@ -70,7 +71,7 @@ const SignUp = () => {
                    <div>
                        <FieldCon type="password" name="password" placeholder="password" />
                    </div>
-                   <ButtonStyle type="submit">Submit</ButtonStyle>
+                   <Link to='/conjugator' className="LinkStyle" type="submit">Submit</Link>
                </FormCon>
            </SignUpWrapper>
        </SignUpDiv>
