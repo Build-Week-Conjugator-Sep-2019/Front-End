@@ -1,6 +1,7 @@
 import React from 'react';
 import { Form, Field, withFormik } from "formik";
 import styled from "styled-components";
+import axios from 'axios'
 import { Link } from "react-router-dom";
 import Gator from "../assets/gator_2.jpg";
 
@@ -63,6 +64,17 @@ const FormikSignUp = withFormik({
            email: email || "",
            password: password || ""
    }
- }
+ }, handleSubmit(values, {setStatus, resetForm }) {
+    axios
+        .post(`https://conju.herokuapp.com/api/auth/register`, values)
+        .then(response => {
+            setStatus(response.data)
+            console.log(response.data)
+        })
+        .catch(error => {
+            console.elog(error)
+        })
+        resetForm()
+}
 })(SignUp);
 export default FormikSignUp
