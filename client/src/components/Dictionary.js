@@ -6,28 +6,38 @@ function Dictionary(props) {
     const [searchWord, setSearchWord] = useState({
         searchBar: ''
       })
+    const [translatedWord, setTranslatedWord] = useState('')
 
     const newWord = searchWord.searchBar
 
     useEffect(() => {
         axios
-            .get(`https://dictionaryapi.com/api/v3/references/spanish/json/${newWord}?key=8d2afe52-bece-4d22-bc1a-a01f9564e2ab`)
+            .get(`https://dictionaryapi.com/api/v3/references/spanish/json/${translatedWord}?key=8d2afe52-bece-4d22-bc1a-a01f9564e2ab`)
             .then(response => {
-                console.log(response.data[0].meta.id)
+                console.log(response.data[0])
                 setWord(response.data[0].shortdef[0])
                 // setWord(Object.values(response.data[0]))
             })
             .catch(response => {
                 console.log(response.data)
             })
-    }, [newWord])
+    }, [translatedWord])
+
 
     const handleChange = event => {
-        setSearchWord({[event.target.name]: event.target.value});
+        setSearchWord({[event.target.name]: event.target.value})
         console.log(searchWord)
-      }
+    }
+    
+    const translate = event => {
+        event.preventDefault()
+        setTranslatedWord(searchWord.searchBar)
+        setSearchWord({searchBar: ''})
 
-      const handleSubmit = event => {
+    }
+
+
+    const handleSubmit = event => {
         event.preventDefault();
         setSearchWord({searchBar: ''})
         console.log(searchWord)
@@ -35,8 +45,8 @@ function Dictionary(props) {
 
     return(
         <div>
-            Dictionary
-            <form onSubmit={event => handleSubmit(event)}>
+            Translator
+            <form onSubmit={(event) => translate(event)}>
                 <label htmlFor='searchBar'>
                     Word:
                 </label>
@@ -45,7 +55,7 @@ function Dictionary(props) {
                 name="searchBar" 
                 value={searchWord.searchBar}
                 onChange={event => handleChange(event)} />
-                <button className="submit-answer" onSubmit={() => handleSubmit()} >Submit!</button>
+                <button className="submit-answer" >Submit!</button>
             </form>
             {word}
         </div>
