@@ -71,7 +71,7 @@ const FormikLogin = withFormik({
         }
     },
     handleSubmit(values, {setStatus, resetForm }) {
-        axiosWithAuth()
+        axios
             .post(`https://conju.herokuapp.com/api/auth/login`, values)
             .then(response => {
                 setStatus(response.data)
