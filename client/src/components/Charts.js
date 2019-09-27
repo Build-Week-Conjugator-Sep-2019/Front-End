@@ -7,7 +7,7 @@ import '../../src/App.css'
 const BottomDiv = styled.div`
   background: white;
   width: 100%;
-  height: 20rem;
+  height: 25rem;
   box-shadow: 1px 1px 5px 5px;
   display:flex;
   justify-content: space-evenly;
@@ -37,7 +37,6 @@ const StreakNum = styled.span`
 
 function Charts ({ incorrectAnswers, correctAnswers, currentStreak, longestStreak, totalQsAnswered }) {
 
-  console.log(totalQsAnswered)
 const data = {
 	labels: [
 		'Correct',
@@ -75,7 +74,5 @@ const data = {
     </BottomDiv>
   );
 };
-
-
 
 export default Charts

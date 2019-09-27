@@ -1,5 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
+import styled from 'styled-components'
+
+const PCON = styled.p`
+    font-size: 2rem;
+    margin: 0 3.5rem 1rem 0;
+`
 
 function Dictionary(props) {
     const [word, setWord] = useState([])
@@ -7,8 +13,6 @@ function Dictionary(props) {
         searchBar: ''
       })
     const [translatedWord, setTranslatedWord] = useState('')
-
-    const newWord = searchWord.searchBar
 
     useEffect(() => {
         axios
@@ -36,16 +40,11 @@ function Dictionary(props) {
 
     }
 
-
-    const handleSubmit = event => {
-        event.preventDefault();
-        setSearchWord({searchBar: ''})
-        console.log(searchWord)
-      }
-
     return(
         <div>
-            Translator
+            <PCON>
+                Translator
+            </PCON>
             <form onSubmit={(event) => translate(event)}>
                 <label htmlFor='searchBar'>
                     Word:
@@ -54,10 +53,13 @@ function Dictionary(props) {
                 type="text" 
                 name="searchBar" 
                 value={searchWord.searchBar}
-                onChange={event => handleChange(event)} />
-                <button className="submit-answer" >Submit!</button>
+                onChange={event => handleChange(event)}
+                className='inputs' />
+                <button className="LinkStyle2" >Submit!</button>
             </form>
-            {word}
+            <PCON>
+                {word}
+            </PCON>
         </div>
     )
 }

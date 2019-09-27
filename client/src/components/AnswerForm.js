@@ -6,6 +6,7 @@ import Charts from './Charts'
 import Dictionary from './Dictionary'
 import axios from 'axios'
 import styled from "styled-components"
+import '../../src/App.css'
 
 const correct = new UIfx (
   correctAudio,
@@ -28,7 +29,16 @@ const CardAndChartDiv = styled.div`
 `
 
 const ChartDiv = styled.div`
-  margin-top: 230px;
+  margin: 3rem 0 0 0;
+`
+const DictCon = styled.div`
+  position: relative;
+  margin: 5rem 10rem 0 0;
+  height: 15vh;
+`
+
+const PCON = styled.p`
+  font-size: 1.25rem;
 `
 
 const AnswerForm = props => {
@@ -51,14 +61,12 @@ const AnswerForm = props => {
         setTotalQsAnswered(totalQsAnswered + 1)
     }
 
-    console.log(totalQsAnswered)
-
     function checkAnswer(){
         if(answers.answerBar === currentA){
             addOne()
             correct.play()
             setCorrectAnswers(correctAnswers + 1)
-        }else {
+        } else {
             setStreak(0)
             incorrect.play()
             setIncorrectAnswers(incorrectAnswers + 1)
@@ -131,11 +139,10 @@ const AnswerForm = props => {
         // console.log(answers)
       }
     
-    
     return (
-      <CardAndChartDiv>
+      <CardAndChartDiv className='mainCon2'>
         <div>
-            <form onSubmit={event => handleSubmit(event)}>
+            <form className='answerForm' onSubmit={event => handleSubmit(event)}>
                 <label htmlFor='answerBar'>
                     Answer:
                 </label>
@@ -146,11 +153,14 @@ const AnswerForm = props => {
                 autoCorrect="off"
                 spellCheck="off" 
                 value={answers.answerBar}
-                onChange={event => handleChange(event)} />
-                <button className="submit-answer" onSubmit={() => handleSubmit()} onClick={checkAnswer}>Submit!</button>
+                onChange={event => handleChange(event)}
+                className='inputs' />
+                <button className="LinkStyle2" onSubmit={() => handleSubmit()} onClick={checkAnswer}>Submit!</button>
             </form>
-            <p>{currentQ}</p>
-            <Dictionary />
+            <PCON>{currentQ}</PCON>
+            <DictCon>
+                <Dictionary className='inputs' />
+            </DictCon>
         </div>
         <ChartDiv>
             <Charts totalQsAnswered={totalQsAnswered} incorrectAnswers={incorrectAnswers} correctAnswers={correctAnswers} currentStreak={streak} longestStreak={longestStreak} />
