@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import { withFormik, Form, Field } from "formik"
 import { Link } from 'react-router-dom'
 import axios from 'axios'
+import { axiosWithAuth } from './axiosWithAuth'
 
 import '../App.css'
 
@@ -71,7 +72,7 @@ const FormikLogin = withFormik({
         }
     },
     handleSubmit(values, {setStatus, resetForm }) {
-        axios
+        axiosWithAuth()
             .post(`https://conju.herokuapp.com/api/auth/login`, values)
             .then(response => {
                 setStatus(response.data)
